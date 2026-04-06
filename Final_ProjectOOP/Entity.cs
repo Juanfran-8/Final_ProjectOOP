@@ -11,39 +11,28 @@ namespace Final_ProjectOOP
     {
         private int id;
         private string name;
-        private int Datetime;
-        private int createdDate;
+        private DateTime createdDate;
+
+        public DateTime CreatedDate { get => createdDate; set => createdDate = value; }
 
         public int GetId() { return id; }
         public string GetName() { return name; }
-        public int GetDatetime() { return Datetime; }
-
-        public int GetCreatedDate() { return createdDate; }
-
 
         public void SetId(int id) { this.id = id; }
         public void SetName(string name) { this.name = name; }
 
-        public void SetDatetime(int date) { this.Datetime = date; }
-
-        public void SetCreatedDate(int date) { this.createdDate = date; }
-
-
-
-
-        public virtual bool Validate()
+        protected Entity(int id, string name)
         {
-            if (Datetime <= 0)
-            {
-                Console.WriteLine("Datetime must be a valid timestamp.");
-                return false;
-            }
-            if (createdDate <= 0)
-            {
-                Console.WriteLine("Created Date must be a valid timestamp.");
-                return false;
-            }
-            return true;
+            SetId(id);
+            SetName(name);
+            this.createdDate= DateTime.Now;
+
+        }
+
+
+        public virtual bool Validate() //check
+        {
+            return id > 0 && !string.IsNullOrEmpty(name);
         }
 
 

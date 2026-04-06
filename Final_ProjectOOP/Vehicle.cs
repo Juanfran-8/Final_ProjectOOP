@@ -13,27 +13,42 @@ namespace Final_ProjectOOP
        private double currentLoad;
        private bool isAvailable;
 
+        protected Vehicle(int id, string name, double speed, double maxCapacity) : base(id, name)
+        {
+           
+           this.speed = speed;
+           this.maxCapacity = maxCapacity;
+            this.currentLoad = 0;
+            isAvailable = true;
 
-        //falata un metodo para calcular lo que queda de capacidad
+
+        }
+
         public double GetSpeed() { return speed; }
         public double GetMaxCapacity() { return maxCapacity; }
         public double GetCurrentLoad() { return currentLoad; }
         public bool GetIsAvailable() { return isAvailable; }
         public void SetSpeed(double speed) { this.speed = speed; }
-        public void SetMaxCapacity(double maxCapacity)
+        public void SetCapacity(double capacity)
         {
-            if (maxCapacity <= 0)
+            if (capacity > 0)
             {
                 Console.WriteLine("Max Capacity must be greater than zero.");
                 return;
             }
-            this.maxCapacity = maxCapacity;
+            this.maxCapacity = capacity;
         }
         public void SetCurrentLoad(double currentLoad) { this.currentLoad = currentLoad; }
 
         public void SetIsAvailable(bool isAvailable) { this.isAvailable = isAvailable; }
 
-        // Tenemos que calcular la efivciencia de un vehiculo, basado en velocidad y carga 
+
+        public double GetRemainingCapacity()
+        {
+            return maxCapacity - currentLoad;
+        }
+
+        
         public virtual double CalculateEfficiency()
         {
             if (speed <= 0)
@@ -41,10 +56,18 @@ namespace Final_ProjectOOP
                 Console.WriteLine("Speed must be greater than zero to calculate efficiency.");
                 return 0;
             }
-            return speed / maxCapacity;
+            return speed / (currentLoad + 1);
         }
-       
-        //ublic abstract void Deliver(List<Package> packages); Terminar este metodo 
+
+        public abstract void Deliver(List<Package> packages) ; 
+        
+
+        public override void Display()
+        {
+            Console.WriteLine($"VEHICULE id: {GetId()} , Name:{GetName()} ,  Speed: {GetSpeed()}km/h ,  Max Capacity: {GetMaxCapacity()}kg,  Current Load: {GetCurrentLoad()} kg"); 
+        }
+
+
 
 
 

@@ -17,7 +17,7 @@ namespace Final_ProjectOOP
         protected Worker(int id, string name, int experienceYears, int tasksCompleted) : base(id, name)
         {
             this.experienceYears = experienceYears;
-            this.tasksCompleted = 0;
+            this.tasksCompleted = tasksCompleted;
             this.isAvailable = true;
             
         }

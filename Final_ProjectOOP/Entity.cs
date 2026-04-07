@@ -19,7 +19,14 @@ namespace Final_ProjectOOP
         public string GetName() { return name; }
 
         public void SetId(int id) { this.id = id; }
-        public void SetName(string name) { this.name = name; }
+        public void SetName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new Exception("Name cannot be empty.");
+            }
+            this.name = name;
+        }
 
         protected Entity(int id, string name)
         {
@@ -37,13 +44,5 @@ namespace Final_ProjectOOP
 
 
         public abstract void Display();
-      
-        
-
-
-
-
-
-
     }
 }

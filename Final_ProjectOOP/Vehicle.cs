@@ -28,14 +28,18 @@ namespace Final_ProjectOOP
         public double GetMaxCapacity() { return maxCapacity; }
         public double GetCurrentLoad() { return currentLoad; }
         public bool GetIsAvailable() { return isAvailable; }
-        public void SetSpeed(double speed) { this.speed = speed; }
+        public void SetSpeed(double speed) 
+        {
+            this.speed = speed; 
+        }
         public void SetCapacity(double capacity)
         {
-            if (capacity > 0)
+            if (capacity <= 0)
             {
                 Console.WriteLine("Max Capacity must be greater than zero.");
                 return;
             }
+
             this.maxCapacity = capacity;
         }
         public void SetCurrentLoad(double currentLoad) { this.currentLoad = currentLoad; }

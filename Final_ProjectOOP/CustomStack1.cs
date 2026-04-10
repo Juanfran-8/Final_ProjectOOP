@@ -19,16 +19,32 @@ namespace Final_ProjectOOP
             items.Add(item);
         }
 
-        public void Pop(T item) //para sacar elemento
+        public T Pop() //para sacar elemento
         {
+            if (IsEmpty())
+            {
+                throw new InvalidOperationException("Stack is empty.");
+            }
+
+            int lastIndex = items.Count - 1;
+            T lastItem = items[lastIndex];
+            items.RemoveAt(lastIndex);
+            return lastItem;
         }
 
-        public void Peek(T item) //ver elemento de arriba sin quitarlo
+        public T Peek() //ver elemento de arriba sin quitarlo
         {
+            if ( IsEmpty())
+            {
+                throw new InvalidOperationException("Stack is empty.");
+            }
+
+            return items[items.Count - 1];
         }
 
         public bool IsEmpty() //checar si la pila esta vacia
         {
+            return items.Count == 0;
         }
     }
 }

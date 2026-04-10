@@ -19,9 +19,7 @@ namespace Final_ProjectOOP
 
         public string GetDestination() => destination;
 
-
-
-
+        public double GetWeight() => weight;
 
 
 

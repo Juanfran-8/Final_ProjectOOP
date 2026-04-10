@@ -8,9 +8,9 @@ namespace Final_ProjectOOP
 {
     public interface IQueueable <T>
     {
-        CustomQueue<T>
-            
-
-        CustomStack<T>
+        void Enqueue(T item);
+        T Dequeue();
+        T Peek();
+        bool IsEmpty();
     }
 }

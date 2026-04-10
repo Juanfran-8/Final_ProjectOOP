@@ -8,5 +8,9 @@ namespace Final_ProjectOOP
 {
     public interface IFileHandler
     {
+        void Save(string path);
+        void Load(string path);
+
+
     }
 }

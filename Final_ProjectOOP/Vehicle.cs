@@ -67,10 +67,5 @@ namespace Final_ProjectOOP
             Console.WriteLine($"VEHICULE id: {GetId()} , Name:{GetName()} ,  Speed: {GetSpeed()}km/h ,  Max Capacity: {GetMaxCapacity()}kg,  Current Load: {GetCurrentLoad()} kg"); 
         }
 
-
-
-
-
-
     }
 }

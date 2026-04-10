@@ -13,7 +13,9 @@ namespace Final_ProjectOOP
         private int tasksCompleted;
         private bool isAvailable;
 
-        
+        public bool GetIsAvailable() { return isAvailable; }
+        public void SetIsAvailable(bool isAvailable) { this.isAvailable = isAvailable; }
+
         protected Worker(int id, string name, int experienceYears, int tasksCompleted) : base(id, name)
         {
             this.experienceYears = experienceYears;
@@ -21,6 +23,7 @@ namespace Final_ProjectOOP
             this.isAvailable = true;
             
         }
+        
 
 
         public void AddTask()

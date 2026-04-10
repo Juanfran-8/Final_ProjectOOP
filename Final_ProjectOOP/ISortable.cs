@@ -8,5 +8,6 @@ namespace Final_ProjectOOP
 {
     public interface ISortable
     {
+        void Sort();
     }
 }

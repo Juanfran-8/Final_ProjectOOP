@@ -18,7 +18,6 @@ namespace Final_ProjectOOP
             warehouses = new List <Warehouse>();
             allPackages = new List <Package>(); 
         }
-
         public void Save(string path)
         {
             using (StreamWriter sw = new StreamWriter(path)) 
@@ -29,7 +28,6 @@ namespace Final_ProjectOOP
                 }
             }
         }
-
         public void Load(string path)
         {
             if (!File.Exists(path))
@@ -37,14 +35,11 @@ namespace Final_ProjectOOP
                 Console.WriteLine("File not found.");
                 return;
             }
-
             allPackages.Clear();
-
             string[] lines = File.ReadAllLines(path);
             foreach (string line in lines)
             {
                 string[] parts = line.Split('|');
-
                 if (parts[0] == "PACKAGE")
                 {
                     int id = int.Parse(parts[1]);
@@ -59,17 +54,14 @@ namespace Final_ProjectOOP
                 }
             }
         }
-
         public void AddWarehouse(Warehouse w)
         {
             warehouses.Add(w);
         }
-
         public void AddPackage(Package p)
         {
                 allPackages.Add(p);
         }
-
         public Package SearchPackageById(int id) //en public porque si es como privado no lo va a poder llamar
         {
             foreach (Package p in allPackages)
@@ -114,17 +106,13 @@ namespace Final_ProjectOOP
                         delivered = true;
                         break;
                     }
-
                 }
                 if (!delivered)
                 {
-                    Console.WriteLine($"Package: {p.GetId()} is not delivered. Not enough vehicles/workers ");
+                    Console.WriteLine($"Package:{p.GetId()} is not delivered. Not enough vehicles/workers ");
                 }
             }
-
         }
-
-
 
         public void SimulateDay()
         {
@@ -136,7 +124,6 @@ namespace Final_ProjectOOP
 
 
         }
-
         public void Sort()
         {
             int all = allPackages.Count;

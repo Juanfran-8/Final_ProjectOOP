@@ -33,7 +33,7 @@ namespace Final_ProjectOOP
 
         public override void Display()
         {
-            Console.WriteLine($"Loader ID: {GetId()}, Name: {GetName()}, Max Lift Weight: {this.maxLiftWeight} kg, Performance: {CalculatePerformance()}");
+            Console.WriteLine($"Loader ID: {GetId()}, Name: {GetName()}, ExperienceYears: {GetExperienceYears()}, Tasks Completed: {GetTasksCompleted()}, Max Lift Weight: {this.maxLiftWeight} kg, Performance: {CalculatePerformance()}");
         }
     }
 }

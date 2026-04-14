@@ -17,11 +17,12 @@ namespace Final_ProjectOOP
             Warehouse mainWarehouse = new Warehouse("Main Warehouse");
             system.AddWarehouse(mainWarehouse);
             CustomStack<Package> undoStack = new CustomStack<Package>();    
-
+            
+            //TESTING CODE (PARA CHECAR QUE SI COMPILA) 
             /*Truck truck1 = new Truck(5001, "Truck A", 80, 100, 12);
             Van van1 = new Van(6001, "Van A", 40, 50, true);
-            Driver driver1 = new Driver(7001, "John Doe", 5, 0, "Class A");
-            Loader loader1 = new Loader(8001, "Jane Smith", 3, 0, 30); 
+            Driver driver1 = new Driver(7001, "Carlos Tijero", 5, 0, "Class A");
+            Loader loader1 = new Loader(8001, "John Smith", 3, 0, 30); 
             mainWarehouse.AddVehicle(truck1);
             mainWarehouse.AddVehicle(van1);
             mainWarehouse.AddWorkers(driver1);
@@ -101,13 +102,17 @@ namespace Final_ProjectOOP
                                     Console.WriteLine("Van added successfully");
                                 }
 
-                                else
+                                else if (vehicleChoice == 3)
                                 {
                                     Console.WriteLine("Max distance: ");
                                     double maxDistance = double.Parse(Console.ReadLine());
                                     Drone d = new Drone(vehicleId, vehicleName, vehicleSpeed, vehicleCapacity, maxDistance);
                                     mainWarehouse.AddVehicle(d);
                                     Console.WriteLine("Drone added successfully");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid choice");
                                 }
                             }
 
@@ -149,6 +154,10 @@ namespace Final_ProjectOOP
                                     Loader l = new Loader(workerId, workerName, experienceYears, tasksCompleted, maxLiftingCapacity);
                                     mainWarehouse.AddWorkers(l);
                                     Console.WriteLine("Loader added successfully");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Invalid choice");
                                 }
                             }
                             else

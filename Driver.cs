@@ -29,7 +29,7 @@ namespace Final_ProjectOOP
 
         public override void Display()
         {
-            Console.WriteLine($"Driver ID: {GetId()}, Name: {GetName()}, License Type: {this.licenseType}, Performance: {CalculatePerformance()}");
+            Console.WriteLine($"Driver ID: {GetId()}, Name: {GetName()}, ExperienceYears: {GetExperienceYears()}, Tasks Completed: {GetTasksCompleted()}, License Type: {this.licenseType}, Performance: {CalculatePerformance()}");
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Final_ProjectOOP
         {
             this.teamSize = teamSize;
         }
+
         public int getTeamSize()
         {
             return this.teamSize;
@@ -21,6 +22,11 @@ namespace Final_ProjectOOP
         public void SetTeamSize(int teamSize)
         {
             this.teamSize = teamSize;
+        }
+
+        public int GetTeamSize()
+        { 
+            return this.teamSize; 
         }
 
         public override void PerformTask()
@@ -50,7 +56,7 @@ namespace Final_ProjectOOP
 
         public override void Display()
         {
-            Console.WriteLine($"Manager ID: {GetId()}, Name: {GetName()}, Team Size: {this.teamSize}, Performance: {CalculatePerformance()}");
+            Console.WriteLine($"Manager ID: {GetId()}, Name: {GetName()}, ExperienceYears: {GetExperienceYears()}, TasksCompleted: {GetTasksCompleted()}, Team Size: {this.teamSize}, Performance: {CalculatePerformance()}");
         }
     }
 }

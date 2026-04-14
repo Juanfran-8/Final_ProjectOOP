@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -26,8 +27,27 @@ namespace Final_ProjectOOP
                 {
                     sw.WriteLine($"PACKAGE|{p.GetId()}|{p.GetWeight()}|{p.GetPriorityLevel()}|{p.GetDestination()}|{p.GetStatus()}");
                 }
+                foreach (Warehouse wh in warehouses)
+                {
+                    foreach (Worker w in wh.GetWorkers())
+                    {
+                        if (w is Driver d)
+                        {
+                            sw.WriteLine($"WORKER | Driver|{d.GetId()}|{d.GetName()}|{d.GetExperienceYears()}|{d.GetTasksCompleted()}|{d.GetLicenseType()}");
+                        }
+                    
+                    else if (w is Loader l)               
+                    {
+                        sw.WriteLine($"WORKER | Loader|{l.GetId()}|{l.GetName()}|{l.GetExperienceYears()}|{l.GetTasksCompleted()}|{l.GetMaxLiftWeight()}");
+                    }
+                    else if (w is Manager m)                    
+                    {
+                        sw.WriteLine($"WORKER | Manager|{m.GetId()}|{m.GetName()}|{m.GetExperienceYears()}|{m.GetTasksCompleted()}|{m.GetTeamSize()}");
+                    }
+                }
             }
         }
+    }
         public void Load(string path) //
         {
             if (!File.Exists(path))
@@ -94,16 +114,25 @@ namespace Final_ProjectOOP
                     Worker e = w.AssignWorker();
                     if (v != null && e != null)
                     {
-                        p.UpdateStatus("assigned");  //falso porque aun no esta entregado
+                        p.UpdateStatus("assigned"); 
                         v.SetIsAvailable(false);
                         e.SetIsAvailable(false);
                         v.Deliver(new List<Package> {p});
-                        e.PerformTask();
-                        p.UpdateStatus("delivered"); //verdadero porque ya esta entregado
+                        e.PerformTask();                       
+                        if (p.GetStatus() == "delivered") //para no forzar el delivered 
+                        {
+                            delivered = true;
+                        }
                         v.SetIsAvailable(true);
                         e.SetIsAvailable(true);
-                        delivered = true;
-                        break;
+                        if (delivered)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            p.UpdateStatus("pending");
+                        }
                     }
                 }
                 if (!delivered)

@@ -24,7 +24,15 @@ namespace Final_ProjectOOP
             
         }
         
+        public int GetExperienceYears()
+        { 
+            return experienceYears; 
+        }
 
+        public int GetTasksCompleted()
+        {
+            return tasksCompleted;
+        }
 
         public void AddTask()
         {

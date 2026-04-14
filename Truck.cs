@@ -8,14 +8,17 @@ namespace Final_ProjectOOP
 {
     public class Truck : Vehicle
     {
-        double fuelConsumption;
+        private double fuelConsumption;
 
         public Truck(int id, string name, double speed, double maxCapacity, double fuelConsumption) : base(id, name, speed, maxCapacity)
         {
             this.fuelConsumption = fuelConsumption;
         }
 
-
+        public double GetFuelConsumption()
+        { 
+           return fuelConsumption;
+        }
 
         // void override deliver 
         public override double CalculateEfficiency()
@@ -40,7 +43,7 @@ namespace Final_ProjectOOP
         }
          public override void Display()
         {
-            Console.WriteLine($"Truck ID: {GetId()}, Name: {GetName()}, Speed: {GetSpeed()} km/h, Max Capacity: {GetMaxCapacity()} kg, Current Load: {GetCurrentLoad()} kg, Fuel Consumption: {fuelConsumption} L/100km");
+            Console.WriteLine($"Truck ID: {GetId()}, Name: {GetName()}, Speed: {GetSpeed()} km/h, Max Capacity: {GetMaxCapacity()} kg, Current Load: {GetCurrentLoad()} kg, Fuel Consumption: {GetFuelConsumption()} L/100km");
         }
     }
 }

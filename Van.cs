@@ -15,6 +15,11 @@ namespace Final_ProjectOOP
             this.electric = electric;
         }
 
+        public bool GetIsElectric()
+        { 
+            return electric; 
+        }
+
         public override void Deliver(List<Package> packages)
         {
             Console.WriteLine($" {GetName()} is processing heavy deliveries");
@@ -28,6 +33,11 @@ namespace Final_ProjectOOP
                 }
 
             }
+        }
+
+        public override void Display()
+        {
+            Console.WriteLine($"Van ID: {GetId()}, Name: {GetName()}, Speed: {GetSpeed()} km/h, Max Capacity: {GetMaxCapacity()} kg, Current Load: {GetCurrentLoad()} kg, Electric: {GetIsElectric()}");
         }
 
     }

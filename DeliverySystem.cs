@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Final_ProjectOOP
 {
@@ -23,27 +24,45 @@ namespace Final_ProjectOOP
         {
             using (StreamWriter sw = new StreamWriter(path)) 
             {
-                foreach (Package p in allPackages) 
+                foreach(Warehouse wh in warehouses)
                 {
-                    sw.WriteLine($"PACKAGE|{p.GetId()}|{p.GetWeight()}|{p.GetPriorityLevel()}|{p.GetDestination()}|{p.GetStatus()}");
+                    sw.WriteLine($"WAREHOUSE|{wh.GetName()}");
+                    foreach (Package p in wh.GetPackages())
+                    {
+                        sw.WriteLine($"PACKAGE|{p.GetId()}|{p.GetWeight()}|{p.GetPriorityLevel()}|{p.GetDestination()}|{p.GetStatus()}");
+                    }
+
+                    foreach (Vehicle v in wh.GetVehicles())
+                    {
+                    if (v is Truck t)
+                    {
+                        sw.WriteLine($"VEHICLE|TRUCK|{t.GetId()}|{t.GetSpeed()}|{t.GetMaxCapacity()}|{t.GetCurrentLoad()}|{t.GetIsAvailable()}|{t.GetFuelConsumption()}");
+                    }
+                    else if (v is Van van) 
+                    {
+                        sw.WriteLine($"VEHICLE|Van|{van.GetId()}|{van.GetName()}|{van.GetSpeed()}|{van.GetMaxCapacity()}|{van.GetCurrentLoad()}|{van.GetIsAvailable()}");
+                    }
+                    else if (v is Drone d) 
+                    {
+                        sw.WriteLine($"VEHICLE|DRONE|{d.GetName()}|{d.GetId()}|{d.GetSpeed()}|{d.GetCurrentLoad()}|{d.GetIsAvailable()}|{d.GetMaxDistance()}");
+                    }
                 }
-                foreach (Warehouse wh in warehouses)
+                foreach (Worker w in wh.GetWorkers())
                 {
-                    foreach (Worker w in wh.GetWorkers())
+                    if (w is Driver d)
                     {
-                        if (w is Driver d)
-                        {
-                            sw.WriteLine($"WORKER | Driver|{d.GetId()}|{d.GetName()}|{d.GetExperienceYears()}|{d.GetTasksCompleted()}|{d.GetLicenseType()}");
-                        }
-                    
-                    else if (w is Loader l)               
-                    {
-                        sw.WriteLine($"WORKER | Loader|{l.GetId()}|{l.GetName()}|{l.GetExperienceYears()}|{l.GetTasksCompleted()}|{l.GetMaxLiftWeight()}");
+                        sw.WriteLine($"WORKER|Driver|{d.GetId()}|{d.GetName()}|{d.GetExperienceYears()}|{d.GetTasksCompleted()}|{d.GetLicenseType()}");
                     }
-                    else if (w is Manager m)                    
+
+                    else if (w is Loader l)
                     {
-                        sw.WriteLine($"WORKER | Manager|{m.GetId()}|{m.GetName()}|{m.GetExperienceYears()}|{m.GetTasksCompleted()}|{m.GetTeamSize()}");
+                        sw.WriteLine($"WORKER|Loader|{l.GetId()}|{l.GetName()}|{l.GetExperienceYears()}|{l.GetTasksCompleted()}|{l.GetMaxLiftWeight()}");
                     }
+                    else if (w is Manager m)
+                    {
+                        sw.WriteLine($"WORKER|Manager|{m.GetId()}|{m.GetName()}|{m.GetExperienceYears()}|{m.GetTasksCompleted()}|{m.GetTeamSize()}");
+                    }
+
                 }
             }
         }
